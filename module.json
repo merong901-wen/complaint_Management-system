@@ -1,0 +1,7 @@
+{
+    "name": "ComplaintResolutionSystem",
+    "version": "1.0.0",
+    "description": "A modular complaint and resolution system",
+    "author": "Meron Getacew",
+    "permissions": ["admin", "user"]
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-labelledby="title desc">
+  <title id="title">Campus support conversation</title>
+  <desc id="desc">A student shares a concern in a message card while a support staff member reviews it.</desc>
+  <defs>
+    <linearGradient id="back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eeeaff"/><stop offset="1" stop-color="#f8f7ff"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8b7cf6"/><stop offset="1" stop-color="#6754d9"/></linearGradient>
+  </defs>
+  <rect x="14" y="12" width="492" height="276" rx="28" fill="url(#back)"/>
+  <circle cx="424" cy="66" r="28" fill="#dcd6ff"/><circle cx="83" cy="229" r="18" fill="#dcd6ff"/>
+  <path d="M77 213c0-8 7-15 15-15h214c8 0 15 7 15 15v113c0 8-7 15-15 15H151l-38 28v-28H92c-8 0-15-7-15-15V213Z" transform="translate(0 -92)" fill="#fff" stroke="#d9d4f4" stroke-width="2"/>
+  <circle cx="111" cy="150" r="15" fill="#e9e5ff"/><path d="M103 150h16m-8-8v16" stroke="#6754d9" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="139" y="139" width="128" height="8" rx="4" fill="#25233a"/><rect x="139" y="155" width="176" height="6" rx="3" fill="#c9c5d7"/>
+  <rect x="99" y="179" width="214" height="43" rx="12" fill="#f1efff"/><rect x="115" y="192" width="143" height="6" rx="3" fill="#8175cf"/><rect x="115" y="204" width="174" height="5" rx="2.5" fill="#c4bfdf"/>
+  <rect x="202" y="232" width="134" height="38" rx="12" fill="url(#accent)"/><rect x="218" y="246" width="85" height="6" rx="3" fill="#fff" opacity=".9"/><circle cx="319" cy="251" r="3" fill="#fff"/>
+  <path d="M367 147c0-8 7-15 15-15h78c8 0 15 7 15 15v52c0 8-7 15-15 15h-8v18l-22-18h-48c-8 0-15-7-15-15v-52Z" fill="#fff" stroke="#d9d4f4" stroke-width="2"/>
+  <path d="m390 172 12 12 27-29" fill="none" stroke="#36a77a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M354 273c0-33 22-54 50-54s50 21 50 54v17H354v-17Z" fill="#6754d9"/>
+  <circle cx="404" cy="203" r="25" fill="#f0c7a8"/><path d="M379 201c1-23 13-36 32-34 16 2 24 14 21 30-8-2-15-9-18-16-8 11-20 17-35 20Z" fill="#29263b"/>
+  <path d="M365 289h79" stroke="#5143b4" stroke-width="3" stroke-linecap="round"/>
+</svg>
