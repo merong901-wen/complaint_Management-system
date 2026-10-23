@@ -1,10 +1,10 @@
 <?php
 // Read configuration from Render Environment Variables or fall back to local XAMPP defaults
-$host     = getenv('DB_HOST')     ?: 'localhost';
-$user     = getenv('DB_USER')     ?: 'root';
-$password = getenv('DB_PASS')     ?: '';
-$database = getenv('DB_NAME')     ?: 'complaint_system';
-$port     = getenv('DB_PORT')     ?: 3306;
+$host     = getenv('DB_HOST')    ?: '127.0.0.1';
+$user     = getenv('DB_USER')    ?: 'root';
+$password = getenv('DB_PASS')    ?: '';
+$database = getenv('DB_NAME')    ?: 'complaint_system';
+$port     = getenv('DB_PORT')    ?: 3306;
 
 // Create connection including the custom port
 $conn = new mysqli($host, $user, $password, $database, (int)$port);
