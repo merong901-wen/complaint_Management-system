@@ -60,6 +60,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // get current page
     min-height: 100vh;
     background: #f4f6f8;
 }
+
 </style>
 
 <div class="sidebar">
@@ -71,9 +72,10 @@ $current_page = basename($_SERVER['PHP_SELF']); // get current page
     <nav>
         <a href="user_dashboard.php" title="Dashboard" aria-label="Dashboard" class="<?= $current_page == 'user_dashboard.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">▦</span><span class="sidebar-link-label">Dashboard</span></a>
         <a href="user_complaints.php" title="Complaints" aria-label="Complaints" class="<?= $current_page == 'user_complaints.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">≡</span><span class="sidebar-link-label">Complaints</span></a>
-        <a href="department_head_messages.php" title="Department head communication" aria-label="Department head communication" class="<?= $current_page == 'department_head_messages.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">✉</span><span class="sidebar-link-label">Head communication</span></a>
+        <a href="chat.php" title="Chat" aria-label="Chat" class="<?= $current_page == 'chat.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">✉</span><span class="sidebar-link-label">Chat</span></a>
         <a href="resolutions.php" title="Resolutions" aria-label="Resolutions" class="<?= $current_page == 'resolutions.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">✓</span><span class="sidebar-link-label">Resolutions</span></a>
         <a href="user_profile.php" title="Profile" aria-label="Profile" class="<?= $current_page == 'user_profile.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">○</span><span class="sidebar-link-label">Profile</span></a>
     </nav>
+
     <div class="sidebar-bottom"><a href="../logout.php" title="<?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?>" aria-label="<?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?>"><span class="sidebar-link-icon" aria-hidden="true">↪</span><span class="sidebar-link-label"><?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?></span></a></div>
 </div>

@@ -24,6 +24,7 @@ A PHP and MySQL web application for managing student complaints from submission 
 - Faculty director tools for faculty-scoped department management, communications, registrations, and audit review.
 - Administrator tools for system-wide dashboards, account and registration management, faculties, system settings, communications, impersonation, and audit logs.
 - Comments and threaded messages, notifications, paginated lists, dashboard summaries, and periodic dashboard refresh.
+- Role-scoped direct chat with unread counts, recent-message previews, online status, file attachments, and recorded voice messages.
 - CLI-only, additive database migrations intended to preserve existing complaint records.
 
 ## Roles and workflow
@@ -84,6 +85,7 @@ Typical setup proceeds from administrator to faculty director to department head
 - PHP with `mysqli` enabled. Use a PHP version supported by the installed XAMPP release; the code uses PHP 8 features such as `mixed`, `never`, and `str_starts_with`.
 - MySQL/MariaDB database server and permission to create/alter tables in the application database.
 - A modern browser with JavaScript enabled.
+- Voice recording requires microphone permission in a secure browser context (HTTPS or localhost). PHP upload limits should allow files up to 16 MB and requests up to 32 MB; the Docker image configures these limits.
 
 ## Installation
 

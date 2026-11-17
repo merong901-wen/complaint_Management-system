@@ -12,6 +12,7 @@ $displayName = $_SESSION['full_name'] ?? $_SESSION['username'] ?? 'Teacher';
     <nav>
         <a href="dashboard.php" title="Dashboard" aria-label="Dashboard" class="<?= $currentPage === 'dashboard.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">▦</span><span class="sidebar-link-label">Dashboard</span></a>
         <a href="complaints.php" title="Complaints" aria-label="Complaints" class="<?= $currentPage === 'complaints.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">≡</span><span class="sidebar-link-label">Complaints</span></a>
+        <a href="chat.php" title="Chat" aria-label="Chat" class="<?= $currentPage === 'chat.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">✉</span><span class="sidebar-link-label">Chat</span></a>
     </nav>
     <div class="sidebar-bottom">
         <a href="../logout.php" title="<?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?>" aria-label="<?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?>"><span class="sidebar-link-icon" aria-hidden="true">↪</span><span class="sidebar-link-label"><?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?></span></a>

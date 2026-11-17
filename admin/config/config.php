@@ -1,6 +1,6 @@
 <?php
-// Read credentials from Render Environment Variables, or default to local XAMPP
-$host     = getenv('DB_HOST')     ?: 'localhost';
+// Read credentials from Render Environment Variables, or default to local 127.0.0.1 (forces TCP/IP)
+$host     = getenv('DB_HOST')     ?: '127.0.0.1';
 $user     = getenv('DB_USER')     ?: 'root';
 $password = getenv('DB_PASS')     ?: '';
 $database = getenv('DB_NAME')     ?: 'complaint_system';

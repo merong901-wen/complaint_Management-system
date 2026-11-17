@@ -10,6 +10,7 @@ $displayName = $_SESSION['full_name'] ?? $_SESSION['username'] ?? 'Faculty direc
     body .role-sidebar nav a:hover,
     body .role-sidebar .sidebar-bottom a:hover,
     body .role-sidebar nav a.active { text-decoration: none !important; }
+
 </style>
 <script src="../public/assets/js/script.js?v=20261015.5" defer></script>
 <aside class="sidebar role-sidebar" aria-label="Faculty director navigation">
@@ -19,7 +20,7 @@ $displayName = $_SESSION['full_name'] ?? $_SESSION['username'] ?? 'Faculty direc
     <nav>
         <a href="dashboard.php" title="Dashboard" aria-label="Dashboard" class="<?= $currentPage === 'dashboard.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">▦</span><span class="sidebar-link-label">Dashboard</span></a>
         <a href="registrations.php" title="Register" aria-label="Register" class="<?= $currentPage === 'registrations.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">＋</span><span class="sidebar-link-label">Register</span></a>
-        <a href="messages.php" title="Messages" aria-label="Messages" class="<?= $currentPage === 'messages.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">@</span><span class="sidebar-link-label">Messages</span></a>
+        <a href="chat.php" title="Chat" aria-label="Chat" class="<?= $currentPage === 'chat.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">@</span><span class="sidebar-link-label">Chat</span></a>
         <a href="audit.php" title="Audit log" aria-label="Audit log" class="<?= $currentPage === 'audit.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">≡</span><span class="sidebar-link-label">Audit log</span></a>
     </nav>
     <div class="sidebar-bottom"><a href="../logout.php" title="Logout" aria-label="Logout"><span class="sidebar-link-icon" aria-hidden="true">↪</span><span class="sidebar-link-label">Logout</span></a></div>

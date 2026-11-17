@@ -7,6 +7,9 @@ RUN a2enmod rewrite
 # 3. Install common database drivers for PHP & MySQL
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
+# Support the chat's 10 MB attachments and 15 MB recorded voice messages.
+RUN printf "upload_max_filesize=16M\npost_max_size=32M\nmax_file_uploads=2\n" > /usr/local/etc/php/conf.d/chat-uploads.ini
+
 # 4. Copy all files from your local folder into Apache's default web directory
 COPY . /var/www/html/
 

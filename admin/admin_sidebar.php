@@ -20,6 +20,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 }
 .sidebar a:hover, .sidebar a.active { background:#34495e; color:#ffd700; }
 .content { margin-left:240px; padding:25px; min-height:100vh; background:#f4f6f8; }
+
 </style>
 
 <div class="sidebar">
@@ -29,12 +30,14 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <h3>Welcome, <?= htmlspecialchars($user_name) ?></h3>
     <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false"><span class="sidebar-theme-icon" data-theme-icon aria-hidden="true">☾</span><span data-theme-label>Dark mode</span></button>
     <nav>
-        <a href="admin_dashboard.php" title="Dashboard" aria-label="Dashboard" class="<?= $current_page=='admin_dashboard.php'?'active':'' ?>"><span class="sidebar-link-icon" aria-hidden="true">▦</span><span class="sidebar-link-label">Dashboard</span></a>
+        <a href="admin_dashboard.php" title="Dashboard" aria-label="Dashboard" class="<?= in_array($current_page, ['admin_dashboard.php', 'admin.php'], true) ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">▦</span><span class="sidebar-link-label">Dashboard</span></a>
+        <a href="admin.php" title="Faculty directors" aria-label="Faculty directors" class="<?= $current_page === 'admin.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">○</span><span class="sidebar-link-label">Directors</span></a>
         <a href="faculty_setup.php#registered-faculties" title="Manage faculties" aria-label="Manage faculties" class="<?= in_array($current_page, ['faculty_setup.php', 'admin_registrations.php'], true) ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">＋</span><span class="sidebar-link-label">Faculties</span></a>
         <a href="system.php" title="System" aria-label="System" class="<?= $current_page=='system.php'?'active':'' ?>"><span class="sidebar-link-icon" aria-hidden="true">⚙</span><span class="sidebar-link-label">System</span></a>
-        <a href="faculty_communications.php" title="Communications" aria-label="Communications" class="<?= $current_page === 'faculty_communications.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">@</span><span class="sidebar-link-label">Communications</span></a>
+        <a href="chat.php" title="Chat" aria-label="Chat" class="<?= $current_page === 'chat.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">✉</span><span class="sidebar-link-label">Chat</span></a>
         <a href="audit_logs.php" title="Audit logs" aria-label="Audit logs" class="<?= $current_page === 'audit_logs.php' ? 'active' : '' ?>"><span class="sidebar-link-icon" aria-hidden="true">◷</span><span class="sidebar-link-label">Audit logs</span></a>
         <a href="admin_profile.php" title="Profile" aria-label="Profile" class="<?= $current_page=='admin_profile.php'?'active':'' ?>"><span class="sidebar-link-icon" aria-hidden="true">○</span><span class="sidebar-link-label">Profile</span></a>
     </nav>
+
     <div class="sidebar-bottom"><a href="../logout.php" title="<?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?>" aria-label="<?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?>"><span class="sidebar-link-icon" aria-hidden="true">↪</span><span class="sidebar-link-label"><?= isset($_SESSION['admin_actor_id']) ? 'Return to admin' : 'Logout' ?></span></a></div>
 </div>

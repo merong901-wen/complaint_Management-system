@@ -153,6 +153,45 @@ $conn->query("CREATE TABLE IF NOT EXISTS faculty_director_messages (
     INDEX idx_faculty_director_message_sender (sender_id, created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
+$conn->query("CREATE TABLE IF NOT EXISTS chat_threads (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_a INT NOT NULL,
+    user_b INT NOT NULL,
+    last_message_at TIMESTAMP NULL DEFAULT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uq_chat_threads_pair (user_a, user_b),
+    INDEX idx_chat_threads_user_a (user_a, last_message_at),
+    INDEX idx_chat_threads_user_b (user_b, last_message_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+$conn->query("CREATE TABLE IF NOT EXISTS chat_messages (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    thread_id BIGINT NOT NULL,
+    sender_id INT NOT NULL,
+    recipient_id INT NOT NULL,
+    message_text TEXT NULL,
+    attachment_name VARCHAR(255) NULL,
+    attachment_path VARCHAR(500) NULL,
+    attachment_type VARCHAR(50) NULL,
+    voice_path VARCHAR(500) NULL,
+    voice_type VARCHAR(50) NULL,
+    is_read TINYINT(1) NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_chat_messages_thread (thread_id, created_at),
+    INDEX idx_chat_messages_recipient (recipient_id, is_read, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+foreach ([
+    'voice_type' => 'VARCHAR(50) NULL AFTER voice_path',
+] as $column => $definition) {
+    migration_add_column($conn, 'chat_messages', $column, $definition);
+}
+
+$conn->query("CREATE TABLE IF NOT EXISTS chat_presence (
+    user_id INT PRIMARY KEY,
+    last_seen TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_chat_presence_last_seen (last_seen)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
 foreach ([
     'full_name' => "VARCHAR(120) NOT NULL DEFAULT ''",
     'student_number' => 'VARCHAR(64) NULL',
