@@ -92,7 +92,7 @@ Typical setup proceeds from administrator to faculty director to department head
 1. Place or clone this project into the web server document root. With the default XAMPP layout, this repository is `C:\xampp\htdocs\complaint-resolution`.
 2. Start Apache and MySQL from the XAMPP Control Panel.
 3. Create a database named `complaint_system` in phpMyAdmin or from the MySQL command line. The configured database user must be able to create and alter tables.
-4. Review `admin/config/config.php`. Its current defaults are host `localhost`, user `root`, an empty password, and database `complaint_system`. Change these values to match your local database; do not use the default credentials in a production deployment.
+4. Review `admin/config/config.php`. Its local defaults are host `127.0.0.1`, user `root`, an empty password, and database `complaint_system`. Change these values to match your local database; do not use the default credentials in a production deployment.
 5. From PowerShell in the project root, run the schema migration with the XAMPP PHP executable:
 
    ```powershell
@@ -105,6 +105,20 @@ Typical setup proceeds from administrator to faculty director to department head
 7. Open `http://localhost/complaint-resolution/` in a browser. Sign in at `/login.php`.
 
 If the project is hosted under a different URL path or virtual host, use that base URL in place of `/complaint-resolution/`. The application currently expects its PHP files and assets to be served from the project root structure.
+
+### Deploy to Render
+
+The application requires MySQL or MariaDB; a database running at `127.0.0.1` inside the web container is not available. Create or use an external MySQL-compatible database that allows connections from the Render service, then add these environment variables to the Render web service:
+
+| Variable | Value |
+| --- | --- |
+| `DB_HOST` | Database server hostname (not `127.0.0.1` or `localhost`) |
+| `DB_PORT` | Database server port, usually `3306` |
+| `DB_NAME` | Application database name |
+| `DB_USER` | Database username |
+| `DB_PASSWORD` | Database password (`DB_PASS` is also accepted) |
+
+After deploying with those variables set, run `php admin/config/migrations.php` from the service's Shell to create/update the schema. The web service will return HTTP 503 and log the connection detail if it cannot connect; it cannot start the application until the database is reachable and the schema is initialized.
 
 ## Account setup
 
@@ -151,7 +165,7 @@ For a production deployment, configure a non-default database account, HTTPS, PH
 
 ## Troubleshooting
 
-- **Database connection fails:** Confirm MySQL is running, `complaint_system` exists, and credentials in `admin/config/config.php` match your local environment.
+- **Database connection fails:** For local use, confirm MySQL is running and `complaint_system` exists. On Render, confirm the `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, and `DB_PASSWORD` variables point to a reachable MySQL/MariaDB server; `localhost` refers to the web container, not your database.
 - **Tables are missing:** Run the migration from the project root with the correct PHP CLI executable. Check the CLI output and PHP error log.
 - **A student or staff account cannot enter:** Check its approval status and required department/faculty assignment. A pending student must be approved by the department head.
 - **Non-admin users see a temporary-unavailable page:** An administrator may have closed the system in system settings; check `system_open`.
@@ -160,7 +174,7 @@ For a production deployment, configure a non-default database account, HTTPS, PH
 
 ## Known implementation notes
 
-- Database defaults are hard-coded in `admin/config/config.php`; there is no `.env` loader in the current code.
+- Database settings come from environment variables (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, and `DB_PASSWORD`/`DB_PASS`), with local XAMPP defaults; there is no `.env` loader in the current code.
 - `admin/config/migrations.php` is the authoritative schema definition. Tables include `users`, `complaints`, `comments`, `departments`, `faculties`, `department_head_conversations`, `department_head_messages`, `faculty_director_messages`, `notifications`, `system_settings`, and `audit_logs`.
 - The migration also supports some older installations by converting legacy `user` roles to `student` and setting eligible legacy accounts to approved. Review and back up existing data before migration.
 - There is no automated test suite or dependency installation command defined in the repository at this time.
